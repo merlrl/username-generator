@@ -29,7 +29,6 @@ def generate_random_username(length=8):
 
 # ---------------------------
 # 1. /generate-username
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def generate_username(request):
     first_name = request.GET.get('first_name')
@@ -43,7 +42,6 @@ def generate_username(request):
 
 # ---------------------------
 # 2. /check-username
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def check_username(request):
     username = request.GET.get('username')
@@ -54,7 +52,6 @@ def check_username(request):
 
 # ---------------------------
 # 3. /username-suggestions
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def username_suggestions(request):
     first_name = request.GET.get('first_name')
@@ -74,7 +71,6 @@ def username_suggestions(request):
 
 # ---------------------------
 # 4. /username-length
-# (Handles POST -> add @csrf_exempt)
 # ---------------------------
 @csrf_exempt
 def username_length(request):
@@ -103,7 +99,6 @@ def username_length(request):
 
 # ---------------------------
 # 5. /username-complexity
-# (Handles POST -> add @csrf_exempt)
 # ---------------------------
 @csrf_exempt
 def username_complexity(request):
@@ -134,7 +129,6 @@ def username_complexity(request):
 
 # ---------------------------
 # 6. /username-availability
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def username_availability(request):
     username = request.GET.get('username')
@@ -149,7 +143,6 @@ def username_availability(request):
 
 # ---------------------------
 # 7. /username-from-phrase
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def username_from_phrase(request):
     phrase = request.GET.get('phrase')
@@ -166,7 +159,6 @@ def username_from_phrase(request):
 
 # ---------------------------
 # 8. /similar-username-suggestions
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def similar_username_suggestions(request):
     username = request.GET.get('username')
@@ -183,7 +175,6 @@ def similar_username_suggestions(request):
 
 # ---------------------------
 # 9. /prefix-username
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def prefix_username(request):
     prefix = request.GET.get('prefix')
@@ -195,7 +186,6 @@ def prefix_username(request):
 
 # ---------------------------
 # 10. /suffix-username
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def suffix_username(request):
     suffix = request.GET.get('suffix')
@@ -207,7 +197,6 @@ def suffix_username(request):
 
 # ---------------------------
 # 11. /username-history
-# (Handles GET and POST -> add @csrf_exempt)
 # ---------------------------
 @csrf_exempt
 def username_history(request):
@@ -224,13 +213,15 @@ def username_history(request):
         for entry in USERNAME_HISTORY:
             if entry['id'] == username_id:
                 entry['favorite'] = True
-                return JsonResponse({'message': f"Username {entry['username']} marked as favorite", 'entry': entry})
+                return JsonResponse({
+                    'message': f"Username {entry['username']} marked as favorite",
+                    'entry': entry
+                })
         return JsonResponse({'error': 'Username id not found'}, status=404)
     return JsonResponse({'error': 'Unsupported method'}, status=405)
 
 # ---------------------------
 # 12. /username-feedback/<int:id>
-# (Handles POST -> add @csrf_exempt)
 # ---------------------------
 @csrf_exempt
 def username_feedback(request, id):
@@ -254,7 +245,6 @@ def username_feedback(request, id):
 
 # ---------------------------
 # 13. /avoid-special-characters
-# (Handles GET and POST -> add @csrf_exempt)
 # ---------------------------
 @csrf_exempt
 def avoid_special_characters(request):
@@ -282,7 +272,6 @@ def avoid_special_characters(request):
 
 # ---------------------------
 # 14. /username-variation
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def username_variation(request):
     base_username = request.GET.get('username')
@@ -300,7 +289,6 @@ def username_variation(request):
 
 # ---------------------------
 # 15. /filter-inappropriate-words
-# (Handles GET and POST -> add @csrf_exempt)
 # ---------------------------
 @csrf_exempt
 def filter_inappropriate_words(request):
@@ -334,7 +322,6 @@ def filter_inappropriate_words(request):
 
 # ---------------------------
 # 16. /custom-username
-# (Handles POST -> add @csrf_exempt)
 # ---------------------------
 @csrf_exempt
 def custom_username(request):
@@ -362,7 +349,6 @@ def custom_username(request):
 
 # ---------------------------
 # 17. /random-username-idea
-# (Handles GET and POST -> add @csrf_exempt)
 # ---------------------------
 @csrf_exempt
 def random_username_idea(request):
@@ -385,7 +371,6 @@ def random_username_idea(request):
 
 # ---------------------------
 # 18. /username-suggestions-by-hobby
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def username_suggestions_by_hobby(request):
     hobby = request.GET.get('hobby')
@@ -399,7 +384,6 @@ def username_suggestions_by_hobby(request):
 
 # ---------------------------
 # 19. /username-check-similarity
-# (GET only; no POST -> no @csrf_exempt needed)
 # ---------------------------
 def username_check_similarity(request):
     new_username = request.GET.get('new_username')
@@ -421,7 +405,6 @@ def username_check_similarity(request):
 
 # ---------------------------
 # 20. /username-history-summary
-# (Handles GET and DELETE -> add @csrf_exempt for DELETE)
 # ---------------------------
 @csrf_exempt
 def username_history_summary(request):
@@ -449,3 +432,16 @@ def username_history_summary(request):
                 return JsonResponse({'message': f"Username {entry['username']} deleted from history."})
         return JsonResponse({'error': 'Username id not found'}, status=404)
     return JsonResponse({'error': 'Unsupported method'}, status=405)
+
+# ---------------------------
+# NEW: Single record detail endpoint
+# ---------------------------
+@csrf_exempt
+def username_history_detail(request, id):
+    if request.method == 'GET':
+        # Loop through USERNAME_HISTORY to find the matching ID
+        for entry in USERNAME_HISTORY:
+            if entry['id'] == id:
+                return JsonResponse(entry)
+        return JsonResponse({'error': f'Username id {id} not found'}, status=404)
+    return JsonResponse({'error': 'GET method required'}, status=405)

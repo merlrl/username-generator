@@ -61,4 +61,7 @@ urlpatterns = [
 
     # 20. /username-history-summary
     path('username-history-summary/', views.username_history_summary, name='username-history-summary'),
+
+    # NEW: Single record detail endpoint (GET by ID)
+    path('username-history/<int:id>/', views.username_history_detail, name='username-history-detail'),
 ]
