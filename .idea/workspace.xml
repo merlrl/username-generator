@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfcd001a-b5f5-436c-8c7f-73415f46eab2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/UsernameAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UsernameAPI.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/username_generator/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/username_generator/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/username_generator/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/username_generator/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,21 +45,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/merlr/OneDrive/Documents/Password Gen/username-generator",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/merlr/OneDrive/Documents/Password Gen/username-generator&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="UsernameAPI" type="Python.DjangoServer" factoryName="Django server">
       <module name="UsernameAPI" />
@@ -104,7 +103,12 @@
       <option name="presentableId" value="Default" />
       <updated>1740808823785</updated>
       <workItem from="1740808824848" duration="6642000" />
-      <workItem from="1741401738097" duration="2781000" />
+      <workItem from="1741401738097" duration="4324000" />
+      <workItem from="1741604629387" duration="94000" />
+      <workItem from="1742005797779" duration="2586000" />
+      <workItem from="1742385255269" duration="34000" />
+      <workItem from="1742567657656" duration="9369000" />
+      <workItem from="1742602658517" duration="2298000" />
     </task>
     <servers />
   </component>
